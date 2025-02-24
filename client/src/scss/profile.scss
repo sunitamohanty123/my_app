@@ -1,0 +1,329 @@
+.profile {
+    .pics {
+        position: relative;
+        padding-top: 70px;
+
+        @media (max-width: 767px) {
+            padding-top: 100px;
+        }
+
+        .cover-photo {
+
+            img,
+            span {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+                background-color: #e2e5e9;
+
+                @media (max-width: 767px) {
+                    height: 200px;
+                }
+            }
+
+            span {
+                display: block;
+            }
+        }
+
+        .profile-row {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            top: 30px;
+
+            @media (max-width: 767px) {
+                flex-direction: column;
+            }
+
+            .profile-pic {
+                display: flex;
+                flex-direction: column;
+                margin-left: 30%;
+
+                @media (max-width: 767px) {
+                    margin: 25px 0 0;
+                }
+
+                img,
+                span {
+                    border-radius: 50%;
+                    height: 300px;
+                    width: 300px;
+                    object-fit: cover;
+                    border: 4px solid black;
+                    position: absolute;
+                    top: -170px;
+                    left: 30px;
+                    background-color: #e2e5e9;
+
+                    svg {
+                        width: 300px;
+                        height: 300px;
+
+                        path {
+                            fill: #fff;
+                        }
+                    }
+
+
+
+
+                    @media (max-width: 1200px) {
+                        width: 250px;
+                        height: 250px;
+                        top: -150px;
+                        left: 10px;
+                    }
+
+                    @media (max-width: 992px) {
+                        width: 200px;
+                        height: 200px;
+                        top: -140px;
+                    }
+
+                    @media (max-width: 767px) {
+                        width: 100px;
+                        height: 100px;
+                        top: -79px;
+                    }
+
+                }
+
+                span {
+                    border: 1px solid #e2e5e9;
+                }
+
+                .name {
+                    h3 {}
+
+                }
+
+                .bio {
+                    p {
+                        font-style: italic;
+                        font-size: 20px;
+                        white-space: pre-wrap;
+                        word-wrap: break-word;
+                    }
+                }
+            }
+
+
+
+            .editprofile {
+                margin-right: 30px;
+
+                a {
+                    color: #080809;
+                    text-decoration: none;
+                    border-radius: 18px;
+                    padding: 12px 20px 15px 20px;
+                    background-color: #e2e5e9;
+                    font-size: 18px;
+                    font-weight: 600;
+
+                    span {
+                        margin: 0 12px 0 0;
+                    }
+
+                    @media (min-width: 768px) {
+                        &:nth-last-child(1) {
+                            display: none;
+                        }
+                    }
+                }
+
+                @media (max-width: 767px) {
+                    padding: 30px 0 30px !important;
+                    border-top: 1px solid;
+                    border-bottom: 1px solid;
+                    margin: 0;
+                    display: flex;
+                    justify-content: space-around;
+                    flex-direction: row-reverse;
+
+                    a {
+                        padding: 10px !important;
+                        font-size: 16px !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .navbar {
+        margin-top: 150px;
+
+        @media (max-width: 767px) {
+            margin-top: 40px;
+        }
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            margin: 0;
+
+            @media (max-width: 767px) {
+                padding: 0 !important;
+
+                li {
+                    font-size: 16px !important;
+                }
+            }
+
+            li {
+                font-size: 20px;
+                font-weight: 600;
+                width: 100%;
+                text-align: center;
+                padding-bottom: 15px;
+
+                &.active {
+                    border-bottom: 2px solid #0d6efd;
+                    color: #0d6efd;
+                }
+            }
+        }
+    }
+
+    .user-posts {
+        padding: 40px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #e2e5e9;
+    }
+}
+
+.edit-profile {
+    background: #f2f4f7;
+    padding-bottom: 112px;
+    padding-top: 72px;
+    text-align: center;
+
+    form {
+        @media (max-width: 767px) {
+            max-width: 90%;
+            padding: 10px;
+        }
+
+        max-width: 600px;
+        margin: auto;
+        background-color: #fff;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, .1),
+        0px 8px 16px rgba(0, 0, 0, .1);
+        display: flex;
+        flex-direction: column;
+        padding: 20px 30px;
+
+        .name {
+            display: inline-flex;
+            gap: 0 20px;
+
+            input {
+                width: 50%;
+            }
+        }
+
+        textarea {
+            height: 200px;
+            margin-bottom: 0 !important;
+        }
+
+        input,
+        textarea {
+            font-size: 20px;
+            border: 1px solid #080809;
+            padding: 6px;
+            margin-bottom: 20px;
+            width: 100%;
+
+            @media (max-width: 767px) {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+        }
+
+        input {
+            height: 50px;
+
+            @media (max-width: 767px) {
+                height: 40px;
+            }
+        }
+
+        button {
+            &.btn {
+                width: 30%;
+                margin: 10px auto;
+            }
+
+            &.emoji {
+                width: fit-content;
+                margin-bottom: 20px;
+
+            }
+        }
+
+        h3 {
+            margin-bottom: 50px;
+
+            @media (max-width: 767px) {
+                margin-bottom: 20px;
+            }
+        }
+
+        label {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: right;
+            display: block;
+            margin-bottom: 10px;
+
+            @media (max-width: 767px) {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    margin: 200px auto;
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    border-radius: 50%;
+    background:
+        linear-gradient(0deg, rgb(0 0 0/50%) 30%, #0000 0 70%, rgb(0 0 0/100%) 0) 50%/8% 100%,
+        linear-gradient(90deg, rgb(0 0 0/25%) 30%, #0000 0 70%, rgb(0 0 0/75%) 0) 50%/100% 8%;
+    background-repeat: no-repeat;
+    animation: l23 1s infinite steps(12);
+    text-align: center;
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    grid-area: 1/1;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.915;
+    transform: rotate(30deg);
+}
+
+.loader::after {
+    opacity: 0.83;
+    transform: rotate(60deg);
+}
+
+@keyframes l23 {
+    100% {
+        transform: rotate(1turn)
+    }
+}
