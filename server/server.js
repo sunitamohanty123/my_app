@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require("cors");
@@ -20,7 +21,7 @@ app.use("/api/auth", authrouter);
 app.use("/api/post", postrouter);
 
 
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 connectDb().then(() => {
     app.listen(PORT, () => {
         console.log(`server is running at : ${PORT}`)
