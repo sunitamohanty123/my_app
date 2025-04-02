@@ -8,7 +8,7 @@ const postrouter = require("./routers/postrouter");
 const path = require('path');
 //middleware
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
     methods: "GET, PUT, POST, HEAD, DELETE, PATCH",
     credentials: true
 }
