@@ -3,6 +3,7 @@ import Logo from "../assets/images/react.svg"
 import { Link, useNavigate } from 'react-router-dom'
 import "../App.scss"
 import { useAuth } from '../store/auth';
+import { LoginUser } from '../api/CreateApi';
 function Login() {
     const [user, setUser] = useState({
         email: "",
@@ -59,25 +60,20 @@ function Login() {
         console.log(user);
         if (validateForm()) {
             try {
-                const response = await fetch(`http://localhost:5001/api/auth/login`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(user)
-                })
-                if (response.ok) {
-                    const res_data = await response.json();
+                const response = await LoginUser(user)
+                console.log(response, "response");
+
+                if (response.status === 200) {
+                    const res_data = response.data;
                     console.log(res_data);
                     storeTokenLs(res_data.token);
                     navigate("/home");
-                } else {
-                    const message = await response.json();
-                    console.log(message);
-                    setMsg(message.msg)
                 }
             } catch (error) {
                 console.log(error);
+                const message = error.response.data;
+                console.log(message);
+                setMsg(message.msg)
             }
         }
     }

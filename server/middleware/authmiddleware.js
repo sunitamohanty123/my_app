@@ -10,7 +10,7 @@ const authMiddleware = async (req, res, next) => {
 
     try {
         const isVerified = jwt.verify(jwtToken, "sunita");
-        // console.log(isVerified);
+        console.log(isVerified);
 
         const LoginUser = await User.findOne({ _id: isVerified.user_id }).select({ password: 0 });
         console.log(LoginUser);

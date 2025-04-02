@@ -5,6 +5,7 @@ import Logo from '../assets/images/react.svg'
 import { HiMiniQuestionMarkCircle } from "react-icons/hi2";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/auth';
+import { RegisterUser } from '../api/CreateApi';
 function Register() {
     const [user, setUser] = useState({
         firstname: "",
@@ -116,17 +117,10 @@ function Register() {
         console.log(user, errors);
         if (validationForm()) {
             try {
-                const respoonse = await fetch(`http://localhost:5001/api/auth/register`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(user)
-                });
+                const respoonse = await RegisterUser(user)
                 console.log(respoonse);
-
-                if (respoonse.ok) {
-                    const res_data = await respoonse.json();
+                if (respoonse.status === 200) {
+                    const res_data = respoonse.data;
                     console.log(res_data);
                     storeTokenLs(res_data.token);
                     navigate("/home");

@@ -3,6 +3,7 @@ import { useAuth } from '../../store/auth'
 import "../../scss/profile.scss"
 import { useNavigate } from 'react-router-dom';
 import EmojiPicker from "emoji-picker-react";
+import { editProfile } from '../../api/CreateApi';
 
 function EditProfile() {
     const [loading, setLoading] = useState(true);
@@ -79,24 +80,17 @@ function EditProfile() {
                 console.log(`${key}:`, value); // Log the value for non-file fields
             }
         }
-        console.log(formData, "formData", `http://localhost:5001/api/auth/edit/${user._id}`);
+        console.log(formData, "formData",);
         try {
-            const response = await fetch(`http://localhost:5001/api/auth/edit/${user._id}`, {
-                method: "PATCH",
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                },
-                body: formData
-            })
-            if (response.ok) {
-                const res_data = await response.json();
+            const response = await editProfile(user._id, formData)
+            if (response.status === 200) {
+                const res_data = response.data;
                 console.log(res_data);
                 getUser();
                 navigate("/profile");
             }
         } catch (error) {
             console.log(error);
-
         }
     }
 

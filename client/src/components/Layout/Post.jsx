@@ -9,7 +9,6 @@ function Post({ search }) {
 
     const getAllPosts = async (e) => {
         try {
-
             const response = await fetch(`http://localhost:5001/api/post/getposts`, {
                 method: "GET",
                 headers: {

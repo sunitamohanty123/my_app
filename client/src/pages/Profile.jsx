@@ -7,6 +7,7 @@ import PostCard from '../components/Layout/PostCard';
 import { useAuth } from '../store/auth';
 import { FaUserCircle } from "react-icons/fa";
 import { IoCreateOutline } from "react-icons/io5";
+import { deletePostByUser, getUserPost } from '../api/CreateApi';
 
 function Profile() {
     const [posts, setPosts] = useState([]);
@@ -16,15 +17,11 @@ function Profile() {
 
     const getPostByUser = async (e) => {
         try {
-            const response = await fetch(`http://localhost:5001/api/auth/getuserpost`, {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            })
-            if (response.ok) {
-                const res_data = await response.json();
-                console.log(res_data);
+            const response = await getUserPost();
+            console.log(response, "axios");
+
+            if (response.status === 200) {
+                const res_data = response.data;
                 setPosts(res_data.response)
             }
         } catch (error) {
@@ -34,19 +31,11 @@ function Profile() {
 
     const handleDelete = async (id) => {
         console.log(id);
-
         try {
-            const response = await fetch(`http://localhost:5001/api/auth/deletepostbyuser/${id}`, {
-                method: "DELETE",
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            })
-
-            if (response.ok) {
+            const response = await deletePostByUser(id)
+            if (response.status === 200) {
                 getPostByUser();
             }
-
         } catch (error) {
             console.log(error);
         }
